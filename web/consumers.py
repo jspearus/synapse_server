@@ -4,7 +4,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 from core.data_apis import get_weather
 
-device_list = ['all', 'server',]
+device_list = ['all', 'Web',]
 
 
 class ChatRoomConsumer(AsyncWebsocketConsumer):
