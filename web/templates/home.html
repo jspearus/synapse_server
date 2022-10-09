@@ -65,8 +65,8 @@
         chatSocket.onmessage = function (e) {
             const data = JSON.parse(e.data);
             console.log(data)
-            if (data.destination == 'Web' ){
-                document.querySelector('#alert').innerHTML = (data.username +'Sent -  '+  data.message + '\n')
+            if (data.destination == 'Web'){
+                document.querySelector('#alert').innerHTML = (data.username +': Sent -  '+  data.message + '\n')
             }
             document.querySelector('#chat-text').value += (data.username +': '+  data.message + '\n')
         }

@@ -1,7 +1,10 @@
-import json
+from http import server
+import json, time
 from channels.generic.websocket import AsyncWebsocketConsumer
 
-device_list = ['all', ]
+from core.data_apis import get_weather
+
+device_list = ['all', 'server',]
 
 
 class ChatRoomConsumer(AsyncWebsocketConsumer):
@@ -28,33 +31,44 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
         message = text_data_json['message']
         username = text_data_json['username']
         destination = text_data_json['destination']
+        
         if message == 'connected':
             if username not in device_list:
                 device_list.append(username)
                 print(device_list)
+                destination = "Web"
+     
         elif message == 'close':
             if username in device_list:
                 device_list.remove(username)
                 print(device_list)
+                
         elif message == 'devices':
             if username in device_list:
-                await self.send(text_data=json.dumps({
-                    'message': device_list,
-                    'username': destination,
-                    'destination': username,
-                }))
-
+                message = device_list
+                username = username
+                destination = destination
+                
+        elif message == 'weather':
+            if username in device_list:
+                msg=get_weather()
+                print(msg)               
+    
+                message = msg
+                username = username
+                destination = destination
+                
         await self.channel_layer.group_send(
             self.room_group_name,
             {
-                'type': 'chatroom_message',
+                'type': 'chatroomMessage',
                 'message': message,
                 'username': username,
                 'destination': destination,
             }
         )
 
-    async def chatroom_message(self, event):
+    async def chatroomMessage(self, event):
         message = event['message']
         username = event['username']
         dest = event['destination']
