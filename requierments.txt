@@ -2,3 +2,5 @@ django
 websocket
 sockets
 channels
+python-dateutil
+holidays

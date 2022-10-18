@@ -2,7 +2,7 @@ from http import server
 import json, time
 from channels.generic.websocket import AsyncWebsocketConsumer
 
-from core.data_apis import get_weather
+from core.data_apis import get_weather, getNxtHoliday
 
 device_list = ['all', 'Web',]
 
@@ -52,6 +52,16 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
         elif message == 'weather':
             if username in device_list:
                 msg=get_weather()
+                print(msg)               
+    
+                message = msg
+                username = username
+                destination = destination
+                
+        elif message == 'holiday':
+            if username in device_list:
+                print("Getting holiday")
+                msg=getNxtHoliday()
                 print(msg)               
     
                 message = msg
