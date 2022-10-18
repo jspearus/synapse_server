@@ -1,7 +1,12 @@
-import json, os, requests, threading, time, datetime
-from channels.generic.websocket import AsyncWebsocketConsumer
+import datetime
+import json
+import os
+import threading
+import time
 
 import holidays
+import requests
+from channels.generic.websocket import AsyncWebsocketConsumer
 from dateutil.easter import *
 
 Holidays = [
