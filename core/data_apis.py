@@ -78,7 +78,6 @@ def getNxtHoliday():
             break
             
     return nxtHoliday
-
     
 weatherThead = threading.Thread(target=check_weather, args=())
 weatherThead.setDaemon(True)
