@@ -47,7 +47,6 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
         # todo update device list before sending 
         elif message == 'devices':
             if username in device_list:
-                
                 message = device_list
                 username = username
                 destination = destination
