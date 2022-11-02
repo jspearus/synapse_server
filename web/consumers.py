@@ -38,11 +38,6 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
                 device_list.append(username)
                 print(device_list)
                 destination = "Web"
-            elif username == "server":
-                new_device_list.append(username)
-                print(new_device_list)
-                
-                
      
         elif message == 'close':
             if username in device_list:
