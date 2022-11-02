@@ -4,9 +4,10 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 from core.data_apis import get_weather, getNxtHoliday
 
-device_list = ['all', 'Web',]
+device_list = ['all', 'web',]
+new_device_list = ['all', 'web',]
 
-
+    
 class ChatRoomConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
@@ -28,30 +29,37 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         print(text_data)
         text_data_json = json.loads(text_data)
-        message = text_data_json['message']
-        username = text_data_json['username']
-        destination = text_data_json['destination']
+        message = text_data_json['message'].lower()
+        username = text_data_json['username'].lower()
+        destination = text_data_json['destination'].lower()
         
         if message == 'connected':
             if username not in device_list:
                 device_list.append(username)
                 print(device_list)
                 destination = "Web"
+            elif username == "server":
+                new_device_list.append(username)
+                print(new_device_list)
+                
+                
      
         elif message == 'close':
             if username in device_list:
                 device_list.remove(username)
                 print(device_list)
                 
+        # todo update device list before sending 
         elif message == 'devices':
             if username in device_list:
+                
                 message = device_list
                 username = username
                 destination = destination
                 
         elif message == 'weather':
             if username in device_list:
-                msg=get_weather()
+                msg=get_weather().lower()
                 print(msg)               
     
                 message = msg
@@ -61,7 +69,7 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
         elif message == 'holiday':
             if username in device_list:
                 print("Getting holiday")
-                msg=getNxtHoliday()
+                msg=getNxtHoliday().lower()
                 print(msg)               
     
                 message = msg
@@ -89,3 +97,4 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
             'destination': dest,
         }))
     pass
+

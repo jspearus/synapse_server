@@ -129,6 +129,11 @@ ASGI_APPLICATION = "core.routing.application"
 # todo look into redis
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+        "CONFIG":{
+            # "hosts": [("localhost", 6379)],
+            # "expiry": 600,
+            # "group_expiry": 172800, # 2 days
+        }
     }
 }
