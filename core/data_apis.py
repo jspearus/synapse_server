@@ -18,6 +18,8 @@ holidayDates = {}
 year = datetime.date.today().year
 nxtHoliday = ''
 
+weather = ""
+
 # weather condition lists
 snowing =["snow", "flurries"]
 clear =["fair", "clear"]
@@ -27,7 +29,7 @@ cloud =["cloud", "cloudy", "clouds"]
 
 
 
-def get_weather():
+def update_weather():
     response = requests.get(
         "https://api.openweathermap.org/data/2.5/weather?q=Coal%20City,Illinois&units=imperial&appid=fb1746a57b7d298207e7d62a0067f503")
     json_data = json.loads(response.text)
@@ -48,9 +50,15 @@ def get_weather():
     # print(f"current condition: {curDesctiption.lower()}")
     
 def check_weather():
+    global weather
     while True:
-        weather = get_weather()
+        weather = update_weather()
         time.sleep(200)
+        
+def get_weather():
+    global weather
+    return weather
+        
         
         
 def get_holidays():
