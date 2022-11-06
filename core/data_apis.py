@@ -3,7 +3,6 @@ import json
 import os
 import threading
 import time
-
 import holidays
 import requests
 from channels.generic.websocket import AsyncWebsocketConsumer
@@ -19,6 +18,7 @@ year = datetime.date.today().year
 nxtHoliday = ''
 
 weather = ""
+sunset = ""
 
 # weather condition lists
 snowing =["snow", "flurries"]
@@ -36,6 +36,7 @@ def update_weather():
     weather = json_data['weather']
     curWeather = weather[0]['main']
     curDesctiption = weather[0]['description']
+
     if curWeather.lower() in snowing:
         weatherCondition = "snow"
     elif curWeather.lower() in clear:
@@ -44,20 +45,41 @@ def update_weather():
         weatherCondition = "rain"
     elif curWeather.lower() in cloud:
         weatherCondition = "cloud"
+    elif curWeather.lower() in fog:
+        weatherCondition = "fog"
     return weatherCondition
 
     # print(f"current weather: {curWeather.lower()}")
     # print(f"current condition: {curDesctiption.lower()}")
+    
+def update_sunset():
+    global sunset
+    response2 = requests.get(
+        "https://api.sunrise-sunset.org/json?lat=41.287810&lng=-88.285618&date=noon")
+    json_data2 = json.loads(response2.text)
+    time = json_data2['results']
+    sunset = time['sunset']
     
 def check_weather():
     global weather
     while True:
         weather = update_weather()
         time.sleep(200)
+    
+def check_sunset():
+    global sunset
+    while True:
+        update_sunset()
+        time.sleep(43200)
         
 def get_weather():
     global weather
     return weather
+
+def get_sunset():
+    global sunset
+    # print(f"sunset: {sunset}")
+    return sunset
         
         
         
@@ -90,3 +112,7 @@ def getNxtHoliday():
 weatherThead = threading.Thread(target=check_weather, args=())
 weatherThead.setDaemon(True)
 weatherThead.start()
+
+sunsetThead = threading.Thread(target=check_sunset, args=())
+sunsetThead.setDaemon(True)
+sunsetThead.start()

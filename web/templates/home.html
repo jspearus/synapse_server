@@ -15,6 +15,7 @@
                         <label for="exampleFormControlTextarea1" class="h4 pt-5">Synapse Terminal</label>
                         <textarea class="form-control" id="chat-text" rows="10"></textarea><br>
                         <label id="alert"></label><br><br>
+                        <button id="button" type="button" hidden="hidden">Rain</button>
                     </div>
                     <div class="form-group">
                         <label for="dest">Send to</label><br>
@@ -48,7 +49,7 @@
 
                 chatSocket.send(JSON.stringify({
                     'message': message,
-                    'username': 'Web',
+                    'username': 'web',
                     'destination': dest,
                 }));
                 messageInputDom.value = '';
@@ -67,7 +68,7 @@
 
             chatSocket.send(JSON.stringify({
                 'message': message,
-                'username': 'Web',
+                'username': 'web',
                 'destination': dest,
             }));
             messageInputDom.value = '';
@@ -75,6 +76,14 @@
             messageInputDom.setSelectionRange(0, 0);
             messageInputDom.focus();
 
+        };
+        document.querySelector('#button').onclick = function (e) {
+            document.querySelector('#button').setAttribute("disabled", "");
+            chatSocket.send(JSON.stringify({
+                'message': "rain",
+                'username': 'web',
+                'destination': "foyer",
+            }));
         };
         
         const chatSocket = new WebSocket(
@@ -88,8 +97,13 @@
         chatSocket.onmessage = function (e) {
             const data = JSON.parse(e.data);
             console.log(data)
-            if (data.destination == 'Web' || data.destination == 'all'){
+            if (data.destination == 'web' || data.destination == 'all'){
                 document.querySelector('#alert').innerHTML = (data.username +': Sent -  '+  data.message + '\n')
+                if (data.message == 'test'){
+                    document.querySelector('#button').removeAttribute("hidden");
+                    document.querySelector('#button').removeAttribute("disabled");
+                    document.querySelector('#button').innerHTML = ("Rain")
+                }
             }
             document.querySelector('#chat-text').value += (data.username +': '+  data.message + '\n')
         }
