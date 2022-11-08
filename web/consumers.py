@@ -37,12 +37,15 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
             if username not in device_list:
                 device_list.append(username)
                 print(device_list)
-                destination = "Web"
+                destination = "web"
+                message = device_list
      
         elif message == 'close':
             if username in device_list:
                 device_list.remove(username)
                 print(device_list)
+                destination = "web"
+                message = device_list
                 
         # todo update device list before sending 
         elif message == 'devices':

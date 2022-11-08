@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block script %}
+    {% load static %}
+    <script src="{% static '/js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+{% endblock %}
+
+{% block title %}Synapse-Remote{% endblock %}
+
+{% block content %}
+    <h1>Holiday Remote</H1>
+    <button onclick="myFunction('loud', 'remote')">Loud</button>
+    <button onclick="myFunction('mute', 'remote')">Mute</button>
+    </br></br></br>
+
+
+  
+{% endblock %}
