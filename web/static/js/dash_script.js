@@ -48,13 +48,14 @@ chatSocket.onmessage = function (e) {
             while (list.firstChild) {
                 list.removeChild(list.firstChild);
             }
-            for (let i = 2; i < data.message.length; i++) {
+            for (let i = 0; i < data.message.length; i++) {
                 console.log(data.message[i])
-                let li = document.createElement("li");
-                var button = document.createElement("button");
-                button.innerHTML = data.message[i];
-                button.onclick = function () { testMsg(data.message[i]); }
-                list.appendChild(button);
+                if (data.message[i] != 'web') {
+                    var button = document.createElement("button");
+                    button.innerHTML = data.message[i];
+                    button.onclick = function () { testMsg(data.message[i]); }
+                    list.appendChild(button);
+                }
             }
         }
     }

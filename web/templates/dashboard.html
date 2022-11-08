@@ -8,7 +8,7 @@
 {% block title %}Synapse-Dashboard{% endblock %}
 
 {% block content %}
-<body onload=getDevices()>
+<body >
     <h1>Dashboard</H1>
     <h2 id="device">Selected Device: all</h2>
     <button onclick="myFunction2('rain')">Rain</button>
@@ -18,7 +18,13 @@
     </br></br></br>
     <button onclick="getDevices()">Device_List</button>
     <p>Connected Devices:</p>
-    <ul id="list"></ul>
+    <ul id="list">
+        {% for device in devices %}
+            {% if device != 'web' %}
+                <button onclick="testMsg({{device}})"> {{device}}</button>
+            {% endif %}
+        {% endfor%}
+    </ul>
   
 </body>
 {% endblock %}

@@ -7,7 +7,9 @@ from core.data_apis import get_weather, get_sunset, getNxtHoliday
 device_list = ['all', 'web',]
 new_device_list = ['all', 'web',]
 
-    
+def get_device_list():
+    return device_list
+   
 class ChatRoomConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']

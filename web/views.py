@@ -1,8 +1,12 @@
 from django.shortcuts import render
 
+from web.consumers import get_device_list
 
 def dashboard(request):
-    return render(request, 'dashboard.html', {})
+    devices = get_device_list()
+    return render(request, 'dashboard.html', {
+        'devices': devices
+    })
 
 def home(request):
     return render(request, 'home.html', {})
