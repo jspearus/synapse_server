@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from web.consumers import get_device_list
+from web.consumers import get_device_list, get_monitor_status
+
 
 def dashboard(request):
     devices = get_device_list()
@@ -9,7 +10,17 @@ def dashboard(request):
     })
 
 def home(request):
-    return render(request, 'home.html', {})
+    monStat = get_monitor_status()
+    print(monStat)
+    if monStat == False:
+        mon = 'Mon: Off'
+        
+    elif monStat == True:
+        mon = 'Mon: On'
+    print(mon)
+    return render(request, 'home.html', {
+        'monStat': mon
+    })
 
 def remote(request):
     return render(request, 'remote.html', {})

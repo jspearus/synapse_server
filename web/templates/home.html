@@ -10,17 +10,18 @@
 {% block content %}
     <h1>Home control</H1>
     <h2>Foyer</H2>
-    <button onclick="myFunction('rain', 'foyer')">Rain</button>
-    <button onclick="myFunction('cloud', 'foyer')">Cloud</button>
+    <h6 id="monStat">{{monStat}}</H6>
+    <button class="btn btn-primary btn-md" onclick="myFunction('rain', 'foyer')">Rain</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction('cloud', 'foyer')">Cloud</button>
     </br></br></br>
-    <button onclick="myFunction('mon', 'foyer')">On</button>
-    <button onclick="myFunction('moff', 'foyer')">Off</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction('mon', 'foyer')">On</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction('moff', 'foyer')">Off</button>
     </br></br></br>
     <h2>LV_Tree</H2>
-    <button onclick="myFunction('rain', 'lvtree')">Rain</button>
-    <button onclick="myFunction('cloud', 'lvtree')">Cloud</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction('rain', 'lvtree')">Rain</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction('cloud', 'lvtree')">Cloud</button>
     </br></br></br>
-    <button onclick="myFunction('mon', 'lvtree')">On</button>
-    <button onclick="myFunction('moff', 'lvtree')">Off</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction('mon', 'lvtree')">On</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction('moff', 'lvtree')">Off</button>
     
 {% endblock %}

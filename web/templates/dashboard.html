@@ -11,17 +11,17 @@
 <body >
     <h1>Dashboard</H1>
     <h2 id="device">Selected Device: all</h2>
-    <button onclick="myFunction2('rain')">Rain</button>
-    <button onclick="myFunction2('cloud')">Cloud</button>
-    <button onclick="myFunction2('loud')">Loud</button>
-    <button onclick="myFunction2('mute')">Mute</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction2('rain')">Rain</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction2('cloud')">Cloud</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction2('loud')">Loud</button>
+    <button class="btn btn-primary btn-md" onclick="myFunction2('mute')">Mute</button>
     </br></br></br>
-    <button onclick="getDevices()">Device_List</button>
+    {% comment %} <button onclick="getDevices()">Device_List</button> {% endcomment %}
     <p>Connected Devices:</p>
     <ul id="list">
         {% for device in devices %}
             {% if device != 'web' %}
-                <button onclick="testMsg({{device}})"> {{device}}</button>
+                <button class="btn btn-primary btn-md " onclick=testMsg("{{device}}")> {{device}}</button>
             {% endif %}
         {% endfor%}
     </ul>

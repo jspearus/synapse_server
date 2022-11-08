@@ -9,14 +9,7 @@ function myFunction(msg, dest) {
         'destination': dest,
     }));
 }
-function myFunction2(msg) {
-    console.log(device)
-    chatSocket.send(JSON.stringify({
-        'message': msg,
-        'username': 'web',
-        'destination': device,
-    }));
-}
+
 
 const chatSocket = new WebSocket(
     'ws://' +
@@ -26,14 +19,19 @@ const chatSocket = new WebSocket(
     '/'
 );
 
-function testMsg(msg) {
-    console.log(msg)
-    device = msg
-}
+
 
 chatSocket.onmessage = function (e) {
     const data = JSON.parse(e.data);
     if (data.destination == 'web' || data.destination == 'all') {
         console.log(data)
+        if (data.message.includes('mon:false')) {
+            let label = document.getElementById("monStat");
+            label.innerHTML = "Mon: Off";
+        }
+        else if (data.message.includes('mon:true')) {
+            let label = document.getElementById("monStat");
+            label.innerHTML = "Mon: On";
+        }
     }
 }

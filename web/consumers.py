@@ -6,11 +6,19 @@ from core.data_apis import get_weather, get_sunset, getNxtHoliday
 
 device_list = ['all', 'web',]
 new_device_list = ['all', 'web',]
+monitor_status = False
 
 def get_device_list():
     return device_list
+
+def get_monitor_status():
+        print(f"status: {monitor_status}")
+        return monitor_status
+
+
    
 class ChatRoomConsumer(AsyncWebsocketConsumer):
+    
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'web_%s' % self.room_name
@@ -77,10 +85,23 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
             if username in device_list:
                 print("Getting holiday")
                 msg=getNxtHoliday().lower()              
-    
                 message = msg
                 username = username
                 destination = destination
+        
+        elif message == 'mon:true':
+            if username == 'foyer':
+                if destination == 'web':
+                    monitor_status = True
+                    print(f"MonOn: {monitor_status}")
+                    
+        
+        elif message == 'mon:false':
+            if username == 'foyer':
+                if destination == 'web':
+                    monitor_status = False
+                    print(f"MonOn: {monitor_status}")
+            
                 
         await self.channel_layer.group_send(
             self.room_group_name,

@@ -44,6 +44,14 @@ chatSocket.onmessage = function (e) {
     console.log(data)
     if (data.destination == 'web' || data.destination == 'all') {
         if (data.message.includes('all')) {
+            if (device.includes(data.message)) {
+
+            }
+            else {
+                device = 'all';
+                let label = document.getElementById("device");
+                label.innerHTML = "Selected Device: " + device;
+            }
             let list = document.getElementById("list");
             while (list.firstChild) {
                 list.removeChild(list.firstChild);
@@ -53,8 +61,11 @@ chatSocket.onmessage = function (e) {
                 if (data.message[i] != 'web') {
                     var button = document.createElement("button");
                     button.innerHTML = data.message[i];
-                    button.onclick = function () { testMsg(data.message[i]); }
+                    button.className = "btn btn-primary btn-md";
+                    button.onclick = function () { testMsg(data.message[i]); };
+                    button.style.margin = "0px 5px 5px 5px";
                     list.appendChild(button);
+
                 }
             }
         }
