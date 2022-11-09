@@ -1,7 +1,23 @@
 from django.shortcuts import render
 
 from web.consumers import get_device_list, get_monitor_status
+from core.data_apis import get_weather
 
+
+def update_weather():
+    temp = get_weather()
+    if temp == 'clear':
+        condition = 'Condition: Clear'
+    elif temp == 'cloud':
+        condition = 'Condition: Cloudy'
+    elif temp == 'rain':
+        condition = 'Condition: Rain'
+    elif temp == 'snow':
+        condition = 'Condition: Snow'
+    elif temp == 'fog':
+        condition = 'Condition: Fog'
+        
+    return condition
 
 def dashboard(request):
     devices = get_device_list()
@@ -10,16 +26,20 @@ def dashboard(request):
     })
 
 def home(request):
-    monStat = get_monitor_status()
-    print(monStat)
-    if monStat == False:
+    monisOn = get_monitor_status()
+    condition = update_weather()
+    print(f"monReq: {monisOn}")
+    if monisOn == "Off":
         mon = 'Mon: Off'
         
-    elif monStat == True:
+    elif monisOn == "On":
         mon = 'Mon: On'
-    print(mon)
+        
+    print(f"Mon: {mon}")
+    
     return render(request, 'home.html', {
-        'monStat': mon
+        'monisOn': mon,
+        'condition': condition
     })
 
 def remote(request):

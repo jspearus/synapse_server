@@ -8,20 +8,36 @@
 {% block title %}Synapse-Home{% endblock %}
 
 {% block content %}
+<div class="container px-8 text-left">
     <h1>Home control</H1>
-    <h2>Foyer</H2>
-    <h6 id="monStat">{{monStat}}</H6>
-    <button class="btn btn-primary btn-md" onclick="myFunction('rain', 'foyer')">Rain</button>
-    <button class="btn btn-primary btn-md" onclick="myFunction('cloud', 'foyer')">Cloud</button>
-    </br></br></br>
-    <button class="btn btn-primary btn-md" onclick="myFunction('mon', 'foyer')">On</button>
-    <button class="btn btn-primary btn-md" onclick="myFunction('moff', 'foyer')">Off</button>
-    </br></br></br>
-    <h2>LV_Tree</H2>
-    <button class="btn btn-primary btn-md" onclick="myFunction('rain', 'lvtree')">Rain</button>
-    <button class="btn btn-primary btn-md" onclick="myFunction('cloud', 'lvtree')">Cloud</button>
-    </br></br></br>
-    <button class="btn btn-primary btn-md" onclick="myFunction('mon', 'lvtree')">On</button>
-    <button class="btn btn-primary btn-md" onclick="myFunction('moff', 'lvtree')">Off</button>
-    
+    <div class="row gx-5">
+        <h2>Foyer</H2>
+            <h6 id="weather">{{condition}}</H6>
+        <div class="col-2 px-3 gx-5">
+            <button class="btn btn-primary btn-md" onclick="myFunction('rain', 'foyer')">Rain</button>
+        </div>
+        <div class="col-4 px-3 gx-5">
+            <button class="btn btn-primary btn-md" onclick="myFunction('cloud', 'foyer')">Cloud</button>
+        </div>
+        <div class="col-4 px-3 gx-5">
+            <h6 id="monStat">{{monisOn}}</H6>
+            <div class="row gx-5">
+                <div class="col-6 ">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('mon', 'foyer')">On</button>
+                </div>
+                <div class="col-6 ">    
+                    <button class="btn btn-primary btn-md" onclick="myFunction('moff', 'foyer')">Off</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row gy-5">
+        <h2>LV_Tree</H2>
+        <button class="btn btn-primary btn-md" onclick="myFunction('rain', 'lvtree')">Rain</button>
+        <button class="btn btn-primary btn-md" onclick="myFunction('cloud', 'lvtree')">Cloud</button>
+        </br></br></br>
+        <button class="btn btn-primary btn-md" onclick="myFunction('mon', 'lvtree')">On</button>
+        <button class="btn btn-primary btn-md" onclick="myFunction('moff', 'lvtree')">Off</button>
+    </div>
+</div>  
 {% endblock %}

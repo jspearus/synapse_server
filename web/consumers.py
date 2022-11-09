@@ -6,14 +6,16 @@ from core.data_apis import get_weather, get_sunset, getNxtHoliday
 
 device_list = ['all', 'web',]
 new_device_list = ['all', 'web',]
-monitor_status = False
+monitor_status = "Off"
 
 def get_device_list():
+    global device_list
     return device_list
 
 def get_monitor_status():
-        print(f"status: {monitor_status}")
-        return monitor_status
+    global monitor_status
+    print(f"status: {monitor_status}")
+    return monitor_status
 
 
    
@@ -37,6 +39,8 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
+        global monitor_status
+        global device_list
         print(text_data)
         text_data_json = json.loads(text_data)
         message = text_data_json['message'].lower()
@@ -92,14 +96,14 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
         elif message == 'mon:true':
             if username == 'foyer':
                 if destination == 'web':
-                    monitor_status = True
+                    monitor_status = "On"
                     print(f"MonOn: {monitor_status}")
                     
         
         elif message == 'mon:false':
             if username == 'foyer':
                 if destination == 'web':
-                    monitor_status = False
+                    monitor_status = "Off"
                     print(f"MonOn: {monitor_status}")
             
                 
