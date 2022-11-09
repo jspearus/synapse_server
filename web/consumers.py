@@ -66,7 +66,7 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
             if username in device_list:
                 message = device_list
                 username = username
-                destination = destination
+                destination = destination 
                 
         elif message == 'weather':
             if username in device_list:
