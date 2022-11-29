@@ -33,7 +33,58 @@ chatSocket.onmessage = function (e) {
             let label = document.getElementById("monStat");
             label.innerHTML = "Mon: On";
         }
+        else if (data.message.includes('tree:true')) {
+            let label = document.getElementById("tree_status");
+            label.innerHTML = "Tree: On";
+        }
+        else if (data.message.includes('tree:false')) {
+            let label = document.getElementById("tree_status");
+            label.innerHTML = "Tree: Off";
+        }
+
+        else if (data.message.includes('treed:true')) {
+            let label = document.getElementById("treed_status");
+            label.innerHTML = "Trees: On";
+        }
+        else if (data.message.includes('trees:false')) {
+            let label = document.getElementById("trees_status");
+            label.innerHTML = "Trees: Off";
+        }
+
+        else if (data.message.includes('vil:false')) {
+            let label = document.getElementById("village_status");
+            label.innerHTML = "Village: Off";
+        }
+        else if (data.message.includes('vil:true')) {
+            let label = document.getElementById("village_status");
+            label.innerHTML = "Village: On";
+        }
+        else if (data.message.includes('lights:true')) {
+            let label = document.getElementById("LightStat");
+            label.innerHTML = "Lights: On";
+        }
+        else if (data.message.includes('lights:false')) {
+            let label = document.getElementById("LightStat");
+            label.innerHTML = "Lights: Off";
+        }
+        else if (data.message.includes('cauto:true')) {
+            let label = document.getElementById("CarolAuto");
+            label.innerHTML = "Auto: On";
+        }
+        else if (data.message.includes('cauto:false')) {
+            let label = document.getElementById("CarolAuto");
+            label.innerHTML = "Auto: Off";
+        }
+        else if (data.message.includes('tauto:true')) {
+            let label = document.getElementById("TreeAuto");
+            label.innerHTML = "Auto: On";
+        }
+        else if (data.message.includes('tauto:false')) {
+            let label = document.getElementById("TreeAuto");
+            label.innerHTML = "Auto: Off";
+        }
     }
+
     else if (data.destination == 'foyer') {
 
         if (data.message.includes('clear')) {

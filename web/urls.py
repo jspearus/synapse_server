@@ -7,4 +7,5 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('remote/', views.remote, name='remote'),
     path('<str:room_name>/', views.term, name='terminal'),
+    path('hook/<str:username>/<str:msg>/<str:dest>/', views.hook, name='hook'),
 ]

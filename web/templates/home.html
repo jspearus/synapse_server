@@ -10,17 +10,28 @@
 {% block content %}
 <div class="container px-8 text-center">
     <h1>Home control</H1>
-    <h2>Foyer Carolers</H2>
     <h6 id="weather">{{condition}}</H6>
     <div class="row gx-5">
         <div class="col-4 px-3 gx-5">
-            <button class="btn btn-primary btn-md" onclick="myFunction('rain', 'foyer')">Rain</button>
+            <h6 id="CarolAuto">{{cauto_status}}</H6>
         </div>
         <div class="col-4 px-3 gx-5">
-            <button class="btn btn-primary btn-md" onclick="myFunction('cloud', 'foyer')">Cloud</button>
+            <h2>Foyer Carolers</H2>
         </div>
     </div>
-    </br></br>
+    <div class="row gx-5">
+        <h4>Street Lights</H4>
+        <h6 id="LightStat">{{light_status}}</H6>
+        <h6 id="TreesStat">{{trees_status}}</H6>
+        <div class="col-4 px-3 gx-5">
+            <button class="btn btn-primary btn-md" onclick="myFunction('lon', 'foyer')">Lights On</button>
+        </div>
+        <div class="col-4 px-3 gx-5">
+            <button class="btn btn-primary btn-md" onclick="myFunction('loff', 'foyer')">Lights Off</button>
+        </div>
+    </div>
+    </br>
+    <h4>Back Drop</H4>
     <h6 id="monStat">{{monisOn}}</H6>
     <div class="row gx-5">
         <div class="col-4 px-3 gx-5">
@@ -30,22 +41,33 @@
             <button class="btn btn-primary btn-md" onclick="myFunction('moff', 'foyer')">Off</button>
         </div>
     </div>
-    </br></br>
+    </br></br></br>
     <div class="row gx-5">
-        <h2>Living Room Tree</H2>
+        <div class="row gx-5">
+            <div class="col-4 px-3 gx-5">
+                <h6 id="TreeAuto">{{tauto_status}}</H6>
+            </div>
+            <div class="col-4 px-3 gx-5">
+                <h2>Living Room Tree</H2>
+            </div>
+        </div>
+        <h4>Village</H4>
+        <h6 id="village_status">{{village_status}}</H6>
         <div class="col-4 px-3 gx-5">
-            <button class="btn btn-primary btn-md" onclick="myFunction('rain', 'lvtree')">Rain</button>
+            <button class="btn btn-primary btn-md" onclick="myFunction('vil', 'lvtree')">Village On</button>
         </div>
         <div class="col-4 px-3 gx-5">
-            <button class="btn btn-primary btn-md" onclick="myFunction('cloud', 'lvtree')">Cloud</button>
+            <button class="btn btn-primary btn-md" onclick="myFunction('viloff', 'lvtree')">Village Off</button>
         </div>
     </div>
-    </br></br></br>
+    </br>
+    <h4>Tree</H4>
+    <h6 id="tree_status">{{tree_status}}</H6>
     <div class="row gx-5">
         <div class="col-4">
             <button class="btn btn-primary btn-md" onclick="myFunction('mon', 'lvtree')">On</button>
         </div>
-        <div class="col-2">
+        <div class="col-4">
             <button class="btn btn-primary btn-md" onclick="myFunction('moff', 'lvtree')">Off</button>
         </div>
     </div>

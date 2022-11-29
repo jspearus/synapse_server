@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <h1>sent</h1>
+    
+    <script>
+        var msg = "{{msg|safe}}"
+        var dest = "{{dest|safe}}"
+        var delayInMilliseconds = 250; //1 second
+        
+        const chatSocket = new WebSocket(
+            'ws://' +
+            window.location.host +
+            '/ws/' +
+            'term' +
+            '/'
+        );
+        function myFunction(msg, dest) {
+            console.log(msg, dest)
+            chatSocket.send(JSON.stringify({
+                'message': msg,
+                'username': 'web',
+                'destination': dest,
+            }));
+        }
+        setTimeout(function() {
+            //your code to be executed after 1 second
+            myFunction(msg, dest)
+          }, delayInMilliseconds);
+    
+        
+        
+        
+    </script>
+</body>
+{% endblock %}f
