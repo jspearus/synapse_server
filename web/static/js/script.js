@@ -42,11 +42,7 @@ chatSocket.onmessage = function (e) {
             label.innerHTML = "Tree: Off";
         }
 
-        else if (data.message.includes('treed:true')) {
-            let label = document.getElementById("treed_status");
-            label.innerHTML = "Trees: On";
-        }
-        else if (data.message.includes('trees:false')) {
+        else if (data.message.includes('caroltrees:false')) {
             let label = document.getElementById("trees_status");
             label.innerHTML = "Trees: Off";
         }
@@ -62,10 +58,14 @@ chatSocket.onmessage = function (e) {
         else if (data.message.includes('lights:true')) {
             let label = document.getElementById("LightStat");
             label.innerHTML = "Lights: On";
+            let label2 = document.getElementById("TreesStat");
+            label2.innerHTML = "Trees: On";
         }
         else if (data.message.includes('lights:false')) {
             let label = document.getElementById("LightStat");
             label.innerHTML = "Lights: Off";
+            let label2 = document.getElementById("TreesStat");
+            label2.innerHTML = "Trees: Off";
         }
         else if (data.message.includes('cauto:true')) {
             let label = document.getElementById("CarolAuto");

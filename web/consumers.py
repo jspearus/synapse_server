@@ -142,13 +142,13 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
                     monitor_status = "Off"
                     print(f"MonOn: {monitor_status}")
                     
-        elif message == 'trees:true':
+        elif message == 'caroltrees:true':
             if username == 'foyer':
                 if destination == 'web':
                     trese_status = "On"
                     print(f"Tree: {trees_status}")
         
-        elif message == 'trees:false':
+        elif message == 'caroltrees:false':
             if username == 'foyer':
                 if destination == 'web':
                     trees_status = "Off"
@@ -158,12 +158,14 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
             if username == 'foyer':
                 if destination == 'web':
                     street_light_status = "Off"
+                    trese_status = "Off"
                     print(f"StreetLights: {street_light_status}")
                     
         elif message == 'lights:true':
             if username == 'foyer':
                 if destination == 'web':
                     street_light_status = "On"
+                    trese_status = "On"
                     print(f"StreetLights: {street_light_status}")    
         
         elif message == 'tree:true':
