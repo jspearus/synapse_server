@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block script %}
     {% load static %}
-    <script src="{% static '/js/script.js' %}"></script>
+    <script src="{% static '/js/remote_script.js' %}"></script>
     <link rel="stylesheet" href="{% static '/css/styles.css' %}">
 {% endblock %}
 
@@ -10,32 +10,113 @@
 {% block content %}
     <div class="container px-8 text-center">
         <h1>Holiday Remote</H1>
-        <h6>Settings</H6>
-        <button class="btn btn-primary btn-md" onclick="myFunction('init', 'remote')">Init</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('loud', 'remote')">Loud</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('mute', 'remote')">Mute</button>
-        </br></br></br>
-        <h6>Videos</H6>
-        <button class="btn btn-primary btn-md" onclick="myFunction('grinch', 'remote')">Grinch</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('snowman', 'remote')">Snowman</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('vader', 'remote')">Vader</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('carol', 'remote')">Carol</button>
-        </br></br>
-        <button class="btn btn-primary btn-md" onclick="myFunction('polar', 'remote')">Poal</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('polar2', 'remote')">Polar2</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('what', 'remote')">What</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('claws', 'remote')">Claws</button>
-        </br></br>
-        <button class="btn btn-primary btn-md" onclick="myFunction('random', 'remote')">Random</button>
-        </br></br></br>
-        <h6>Icons</H6>
-        <button class="btn btn-primary btn-md" onclick="myFunction('wreath', 'remote')">Wreath</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('ball', 'remote')">Ball</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('ghost', 'remote')">Ghost</button>
-        </br></br>
-        <button class="btn btn-primary btn-md" onclick="myFunction('snowflake', 'remote')">Snowflake</button>
-        <button class="btn btn-primary btn-md" onclick="myFunction('pumpkin', 'remote')">Pumpkin</button>
-        </br></br></br>
-        <button class="btn btn-primary btn-md" onclick="myFunction('kill', 'remote')">Killswitch</button>
+        <div class="row gx-2 ext-center">
+            <div class="col-3 px-3 gx-4">
+                <h6 id="auto">{{auto}}</H6>
+            </div>
+            <div class="col-3 px-3 gx-5">
+                <h6 id="command">{{command}}</H6>
+            </div>
+            <div class="col-3 px-3 gx-5">
+                <h6 id="weather">{{weather}}</H6>
+            </div>
+        <div class="row gx-2 ext-center">
+        </div>
+            <div class="col-3 px-3 gx-5">
+                <h6 id="event">{{event}}</H6>
+            </div>
+            <div class="col-3 px-3 gx-5">
+                <button class="btn btn-primary btn-md" onclick="myFunction('status', 'remote')">Update</button>
+            </div>
+        </div>
+        </br>
+        <div class="row gx-2 gy-2 text-center">
+            <h6>Settings</H6>
+            <div class="col-3 px-3 gx-5 text-center">
+                <button class="btn btn-primary btn-md" onclick="myFunction('init', 'remote')">Init</button>
+            </div>
+            <div class="col-3 px-3 gx-5">
+                <button class="btn btn-primary btn-md" onclick="myFunction('loud', 'remote')">Loud</button>
+            </div>
+            <div class="col-3 px-3 gx-5">
+                <button class="btn btn-primary btn-md" onclick="myFunction('mute', 'remote')">Mute</button>
+            </div>
+        </div>
+        </br>
+        <div class="row gx-2 gy-2 text-center">
+            <div class="col-3 px-3 gx-5 text-center">
+                <button class="btn btn-primary btn-md" onclick="myFunction('auto', 'remote')">Auto</button>
+            </div>
+            <div class="col-4 px-4 gx-5">
+                <button class="btn btn-primary btn-md" onclick="myFunction('autooff', 'remote')">Auto Off</button>
+            </div>
+        </div>
+            </br></br></br>
+            <h6 class="text-center">Videos</H6>
+            <div class="row gx-2 gy-4 text-center">
+                <div class="col-3 px-3 gx-5 text-center">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('grinch', 'remote')">Grinch</button>
+                </div>
+                <div class="col-3 px-3 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('snowman', 'remote')">Snowman</button>
+                </div>
+                <div class="col-4 px-3 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('vader', 'remote')">Vader</button>
+                </div>
+                <div class="col-3 px-3 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('carol', 'remote')">Carol</button>
+                </div>
+                <div class="col-3 px-3 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('polar', 'remote')">Polar</button>
+                </div>
+                <div class="col-3 px-3 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('polar2', 'remote')">Polar2</button>
+                </div>
+            </div>
+            </br></br>
+            <div class="row gx-2 gy-4 text-center">
+                <div class="col-3 px-3 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('what', 'remote')">What</button>
+                </div>
+                <div class="col-3 px-3 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('claws', 'remote')">Claws</button>
+                </div>
+            </div>
+            </br></br>
+            <div class="row gx-2 gy-4 text-center">
+                <button class="btn btn-primary btn-md" onclick="myFunction('random', 'remote')">Random</button>
+            </div>
+            </br></br></br>
+            <h6 class="text-center">Icons</H6>
+            <div class="row gx-2 gy-4 text-center">
+                <div class="col-3 px-3 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('wreath', 'remote')">Wreath</button>
+                </div>
+                <div class="col-3 px-3 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('ball', 'remote')">Ball</button>
+                </div>
+                <div class="col-3 px-3 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('ghost', 'remote')">Ghost</button>
+                </div>
+            </div>
+            </br></br>
+            <div class="row gx-2 gy-4 text-center">
+                <div class="col-4 px-5 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('snowflake', 'remote')">Snowflake</button>
+                </div>
+                <div class="col-4 px-5 gx-5">
+                    <button class="btn btn-primary btn-md" onclick="myFunction('pumpkin', 'remote')">Pumpkin</button>
+                </div>
+            </div>
+            
+            </div>
+            </br></br></br></br></br></br></br></br></br>
+            </br></br></br></br></br></br></br></br></br>
+            </br></br></br></br></br></br></br></br></br>
+            </br></br></br></br></br></br></br></br></br>
+            <div class="row gx-2 gy-4 text-center">
+                <button class="btn btn-primary btn-md text-center" onclick="myFunction('shutdown', 'remote')">Killswitch</button>
+            </div>
+            </br></br>
     </div>
 {% endblock %}

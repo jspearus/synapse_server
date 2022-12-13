@@ -22,12 +22,22 @@
     <div class="row gx-5">
         <h4>Street Lights</H4>
         <h6 id="LightStat">{{light_status}}</H6>
-        <h6 id="TreesStat">{{trees_status}}</H6>
         <div class="col-4 px-3 gx-5">
-            <button class="btn btn-primary btn-md" onclick="myFunction('lon', 'foyer')">Lights On</button>
+            <button class="btn btn-primary btn-md" onclick="myFunction('lonq', 'foyer')">Lights On</button>
         </div>
         <div class="col-4 px-3 gx-5">
             <button class="btn btn-primary btn-md" onclick="myFunction('loff', 'foyer')">Lights Off</button>
+        </div>
+    </div>
+    </br>
+    <div class="row gx-5">
+        <h4>Tree Lights</H4>
+        <h6 id="TreesStat">{{trees_status}}</H6>
+        <div class="col-4 px-3 gx-5">
+            <button class="btn btn-primary btn-md" onclick="myFunction('tonq', 'foyer')">Trees On</button>
+        </div>
+        <div class="col-4 px-3 gx-5">
+            <button class="btn btn-primary btn-md" onclick="myFunction('toff', 'foyer')">Trees Off</button>
         </div>
     </div>
     </br>

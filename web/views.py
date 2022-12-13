@@ -63,7 +63,13 @@ def home(request):
     })
 
 def remote(request):
-    return render(request, 'remote.html', {})
+    
+    return render(request, 'remote.html', {
+        'auto': "Auto: N-A",
+        'weather': "Condition: N-A",
+        'command': "Pre Command: N-A",
+        'event': "Next Event: N-A",
+    })
 
 
 def term(request, room_name):

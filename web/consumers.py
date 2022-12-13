@@ -76,7 +76,7 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         global monitor_status, street_light_status, carol_auto_status
         global tree_status, village_status, tree_auto_status
-        global device_list
+        global device_list, trees_status
         print(text_data)
         text_data_json = json.loads(text_data)
         message = text_data_json['message'].lower()
@@ -104,6 +104,7 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
                 username = username
                 destination = destination 
                 
+            
         elif message == 'weather':
             if username in device_list:
                 msg=get_weather().lower()              
@@ -142,13 +143,13 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
                     monitor_status = "Off"
                     print(f"MonOn: {monitor_status}")
                     
-        elif message == 'caroltrees:true':
+        elif message == 'trees:true':
             if username == 'foyer':
                 if destination == 'web':
-                    trese_status = "On"
+                    trees_status = "On"
                     print(f"Tree: {trees_status}")
         
-        elif message == 'caroltrees:false':
+        elif message == 'trees:false':
             if username == 'foyer':
                 if destination == 'web':
                     trees_status = "Off"

@@ -33,6 +33,14 @@ chatSocket.onmessage = function (e) {
             let label = document.getElementById("monStat");
             label.innerHTML = "Mon: On";
         }
+        else if (data.message.includes('trees:true')) {
+            let label = document.getElementById("TreesStat");
+            label.innerHTML = "Trees: On";
+        }
+        else if (data.message.includes('trees:false')) {
+            let label = document.getElementById("TreesStat");
+            label.innerHTML = "Trees: Off";
+        }
         else if (data.message.includes('tree:true')) {
             let label = document.getElementById("tree_status");
             label.innerHTML = "Tree: On";
@@ -41,12 +49,6 @@ chatSocket.onmessage = function (e) {
             let label = document.getElementById("tree_status");
             label.innerHTML = "Tree: Off";
         }
-
-        else if (data.message.includes('caroltrees:false')) {
-            let label = document.getElementById("trees_status");
-            label.innerHTML = "Trees: Off";
-        }
-
         else if (data.message.includes('vil:false')) {
             let label = document.getElementById("village_status");
             label.innerHTML = "Village: Off";
@@ -58,14 +60,10 @@ chatSocket.onmessage = function (e) {
         else if (data.message.includes('lights:true')) {
             let label = document.getElementById("LightStat");
             label.innerHTML = "Lights: On";
-            let label2 = document.getElementById("TreesStat");
-            label2.innerHTML = "Trees: On";
         }
         else if (data.message.includes('lights:false')) {
             let label = document.getElementById("LightStat");
             label.innerHTML = "Lights: Off";
-            let label2 = document.getElementById("TreesStat");
-            label2.innerHTML = "Trees: Off";
         }
         else if (data.message.includes('cauto:true')) {
             let label = document.getElementById("CarolAuto");
@@ -85,28 +83,24 @@ chatSocket.onmessage = function (e) {
         }
     }
 
-    else if (data.destination == 'foyer') {
-
-        if (data.message.includes('clear')) {
-            let label = document.getElementById("weather");
-            label.innerHTML = "Condition: Clear";
-        }
-        else if (data.message.includes('cloud')) {
-            let label = document.getElementById("weather");
-            label.innerHTML = "Condition: Cloudy";
-        }
-        else if (data.message.includes('rain')) {
-            let label = document.getElementById("weather");
-            label.innerHTML = "Condition: Rain";
-        }
-        else if (data.message.includes('snow')) {
-            let label = document.getElementById("weather");
-            label.innerHTML = "Condition: Snow";
-        }
-        else if (data.message.includes('fog')) {
-            let label = document.getElementById("weather");
-            label.innerHTML = "Condition: Fog";
-        }
+    if (data.message.includes('clear')) {
+        let label = document.getElementById("weather");
+        label.innerHTML = "Condition: Clear";
     }
-
+    else if (data.message.includes('cloud')) {
+        let label = document.getElementById("weather");
+        label.innerHTML = "Condition: Cloudy";
+    }
+    else if (data.message.includes('rain')) {
+        let label = document.getElementById("weather");
+        label.innerHTML = "Condition: Rain";
+    }
+    else if (data.message.includes('snow')) {
+        let label = document.getElementById("weather");
+        label.innerHTML = "Condition: Snow";
+    }
+    else if (data.message.includes('fog')) {
+        let label = document.getElementById("weather");
+        label.innerHTML = "Condition: Fog";
+    }
 }
