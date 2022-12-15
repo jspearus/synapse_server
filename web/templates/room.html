@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+{% block script %}
+    {% load static %}
+    <script src="{% static '/js/room_script.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+{% endblock %}
+
+{% block title %}Synapse-Remote{% endblock %}
+
+{% block content %}
+    <div class="container px-8 text-center">
+        <h1>LED Panel Editor</H1>
+        <div class="row gx-2 ext-center">
+            <div class="col-3 px-3 gx-4">
+                <h6 id="auto">{{auto}}</H6>
+            </div>
+            <div class="col-3 px-3 gx-5">
+                <h6 id="command">{{command}}</H6>
+            </div>
+            <div class="col-3 px-3 gx-5">
+                <h6 id="weather">{{weather}}</H6>
+            </div>
+        <div class="row gx-2 ext-center">
+        </div>
+            <div class="col-3 px-3 gx-5">
+                <h6 id="event">{{event}}</H6>
+            </div>
+            <div class="col-3 px-3 gx-5">
+                <button class="btn btn-primary btn-md" onclick="myFunction('status', 'remote')">Update</button>
+            </div>
+        </div>
+        </br>
+        <div class="row gx-2 gy-2 text-center">
+            <h6>Settings</H6>
+            <div class="col-3 px-3 gx-5 text-center">
+                <button class="btn btn-primary btn-md" onclick="myFunction('mon', 'room')">On</button>
+            </div>
+            <div class="col-3 px-3 gx-5">
+                <button class="btn btn-primary btn-md" onclick="myFunction('moff', 'room')">Off</button>
+            </div>
+            <div class="col-3 px-3 gx-5">
+                <button class="btn btn-primary btn-md" onclick="clearColor('64', 'black')">Clear</button>
+            </div>
+        </div>
+        </br>
+        <div class="row gx-2 gy-2 text-center">
+            <div class="col-3 px-3 gx-5 text-center">
+                <button class="btn btn-primary btn-md" onclick="myFunction('auto', 'room')">Auto</button>
+            </div>
+            <div class="col-4 px-4 gx-5">
+                <button class="btn btn-primary btn-md" onclick="myFunction('autooff', 'room')">Auto Off</button>
+            </div>
+        </div>
+        </br></br>
+        <div class="grid-container">
+            <div id='0'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('0', 'blue')"></div>
+            <div id='1'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('1', 'blue')"></div>
+            <div id='2'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('2', 'blue')"></div>
+            <div id='3' 
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('3', 'blue')"></div>
+            <div id='4'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('4', 'blue')"></div>
+            <div id='5'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('5', 'blue')"></div>
+            <div id='6'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('6', 'blue')"></div>
+            <div id='7'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('7', 'blue')"></div>
+            <div id='8'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('8', 'blue')"></div>
+            <div id='9'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('9', 'blue')"></div>
+            <div id='10'
+           style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('10', 'blue')"></div>
+            <div id='11' 
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('11', 'blue')"></div>
+            <div id='12'
+           style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('12', 'blue')"></div>
+            <div id='13'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('13', 'blue')"></div>
+            <div id='14'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('14', 'blue')"></div>
+            <div id='15'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('15', 'blue')"></div>
+            <div id='16'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('16', 'blue')"></div>
+            <div id='17'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('17', 'blue')"></div>
+            <div id='18'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('18', 'blue')"></div>
+            <div id='19' 
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('19', 'blue')"></div>
+            <div id='20'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('20', 'blue')"></div>
+            <div id='21'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('21', 'blue')"></div>
+            <div id='22'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('22', 'blue')"></div>
+            <div id='23'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('23', 'blue')"></div>
+            <div id='24'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('24', 'blue')"></div>
+            <div id='25'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('25', 'blue')"></div>
+            <div id='26'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('26', 'blue')"></div>
+            <div id='27' 
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('27', 'blue')"></div>
+            <div id='28'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('28', 'blue')"></div>
+            <div id='29'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('29', 'blue')"></div>
+            <div id='30'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('30', 'blue')"></div>
+            <div id='31'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('31', 'blue')"></div>
+            <div id='32'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('32', 'blue')"></div>
+            <div id='33'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('33', 'blue')"></div>
+            <div id='34'style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('34', 'blue')"></div>
+            <div id='35' 
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('35', 'blue')"></div>
+            <div id='36'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('36', 'blue')"></div>
+            <div id='37'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('37', 'blue')"></div>
+            <div id='38'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('38', 'blue')"></div>
+            <div id='39'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('39', 'blue')"></div>
+            <div id='40'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('40', 'blue')"></div>
+            <div id='41'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);""
+            onclick="changeColor('41', 'blue')"></div>
+            <div id='42'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('42', 'blue')"></div>
+            <div id='43' 
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('43', 'blue')"></div>
+            <div id='44'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('44', 'blue')"></div>
+            <div id='45'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('45', 'blue')"></div>
+            <div id='46'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);""
+            onclick="changeColor('46', 'blue')"></div>
+            <div id='47'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('47', 'blue')"></div>
+            <div id='48'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('48', 'blue')"></div>
+            <div id='49'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('49', 'blue')"></div>
+            <div id='50'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('50', 'blue')"></div>
+            <div id='51' 
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('51', 'blue')"></div>
+            <div id='52'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('52', 'blue')"></div>
+            <div id='53'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('53', 'blue')"></div>
+            <div id='54'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('54', 'blue')"></div>
+            <div id='55'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('55', 'blue')"></div>
+            <div id='56'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('56', 'blue')"></div>
+            <div id='57'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('57', 'blue')"></div>
+            <div id='58'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('58', 'blue')"></div>
+            <div id='59' 
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('59', 'blue')"></div>
+            <div id='60'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('60', 'blue')"></div>
+            <div id='61'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('61', 'blue')"></div>
+            <div id='62'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('62', 'blue')"></div>
+            <div id='63'
+            style="width: 10%; padding-bottom: 10%; background-color: rgb(0, 0, 0);"
+            onclick="changeColor('63', 'blue')"></div>
+        </div>
+    </div>
+{% endblock %}

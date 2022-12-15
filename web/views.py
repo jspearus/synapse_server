@@ -70,6 +70,15 @@ def remote(request):
         'command': "Pre Command: N-A",
         'event': "Next Event: N-A",
     })
+    
+def room(request):
+    
+    return render(request, 'room.html', {
+        'auto': "Auto: N-A",
+        'weather': "Condition: N-A",
+        'command': "Pre Command: N-A",
+        'event': "Next Event: N-A",
+    })
 
 
 def term(request, room_name):
