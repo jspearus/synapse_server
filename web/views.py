@@ -4,7 +4,8 @@ from django.shortcuts import render
 
 from web.consumers import ChatRoomConsumer, get_device_list
 from web.consumers import get_tree_auto_status, get_tree_status, get_village_status, get_trees_status
-from web.consumers import get_carol_auto_status ,get_monitor_status,  get_street_light_status
+from web.consumers import get_carol_auto_status, get_monitor_status,  get_street_light_status
+from web.consumers import get_rem_auto, get_rem_mode, get_rem__pre_command, get_next_event
 from core.data_apis import get_weather
 
 
@@ -20,14 +21,16 @@ def update_weather():
         condition = 'Condition: Snow'
     elif temp == 'fog':
         condition = 'Condition: Fog'
-        
+
     return condition
+
 
 def dashboard(request):
     devices = get_device_list()
     return render(request, 'dashboard.html', {
         'devices': devices
     })
+
 
 def home(request):
     monisOn = get_monitor_status()
@@ -44,13 +47,13 @@ def home(request):
     tAuto = f"Auto: {tAuto}"
     cAuto = get_carol_auto_status()
     cAuto = f"Auto: {cAuto}"
-    
+
     if monisOn == "Off":
         mon = 'Mon: Off'
-        
+
     elif monisOn == "On":
         mon = 'Mon: On'
-    
+
     return render(request, 'home.html', {
         'monisOn': mon,
         'condition': condition,
@@ -62,22 +65,39 @@ def home(request):
         'tauto_status': tAuto
     })
 
+
 def remote(request):
-    
+    auto = get_rem_auto()
+    auto = f"Auto: {auto}"
+    weather = update_weather()
+    command = get_rem__pre_command()
+    command = f"Pre Command: {command}"
+    event = get_next_event()
+    event = f"Next Event: {event}"
+    mode = get_rem_mode()
+    mode = f"Mode: {mode}"
+
     return render(request, 'remote.html', {
-        'auto': "Auto: N-A",
-        'weather': "Condition: N-A",
-        'command': "Pre Command: N-A",
-        'event': "Next Event: N-A",
+        'auto': auto,
+        'weather': weather,
+        'command': command,
+        'event': event,
+        'mode': mode,
     })
-    
+
+
 def room(request):
-    
+    auto = get_rem_auto()
+    auto = f"Auto: {auto}"
+    weather = update_weather()
+    command = get_rem__pre_command()
+    event = get_next_event()
+
     return render(request, 'room.html', {
-        'auto': "Auto: N-A",
-        'weather': "Condition: N-A",
-        'command': "Pre Command: N-A",
-        'event': "Next Event: N-A",
+        'auto': auto,
+        'weather': weather,
+        'command': command,
+        'event': event,
     })
 
 
@@ -85,12 +105,13 @@ def term(request, room_name):
     return render(request, 'term.html', {
         'room_name': room_name
     })
-    
+
+
 def hook(request, username, msg, dest):
-    
+
     tmsg = {'message': msg,
-           'username': username,
-           'destination': dest}
+            'username': username,
+            'destination': dest}
     jmsg = json.dumps(tmsg)
     print(f"message::: {tmsg}")
     return render(request, 'hook.html', {
