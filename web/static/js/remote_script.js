@@ -43,7 +43,7 @@ chatSocket.onmessage = function (e) {
             label.innerHTML = "Pre Command: " + nextEvent[1];
         }
         else if (data.message.includes('remmode')) {
-            let label = document.getElementById("command");
+            let label = document.getElementById("mode");
             let mode = data.message.split(":");
             label.innerHTML = "Mode: " + mode[1];
         }
