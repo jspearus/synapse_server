@@ -15,7 +15,7 @@ Holidays = [
 
 holidayDates = {}
 year = datetime.date.today().year
-nxtHoliday = ''
+nxtHoliday = "New Year's Day"
 
 weather = ""
 sunset = ""
@@ -101,6 +101,7 @@ def get_holidays():
 
 def getNxtHoliday():
     get_holidays()
+    global nxtHoliday
     for date, name in holidayDates.items():
         if datetime.date.today() <= date and name in Holidays:
             nxtDate = date
