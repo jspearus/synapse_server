@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-7xi0fi+wd9=r860^-tm1)$z=s16dtpr96^x-23&b1fysqan7p)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.136', 'synapse.viewdns.net']
+ALLOWED_HOSTS = ['192.168.1.141', 'synapse.viewdns.net']
 
 
 # Application definition
