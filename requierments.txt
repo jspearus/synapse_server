@@ -1,6 +1,7 @@
 django
 websocket
 sockets
-channels
+channels==3.0.5
+requets
 python-dateutil
 holidays
