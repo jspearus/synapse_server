@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-7xi0fi+wd9=r860^-tm1)$z=s16dtpr96^x-23&b1fysqan7p)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.141', 'synapse.viewdns.net']
+ALLOWED_HOSTS = ['192.168.1.20', 'synapse.viewdns.net']
 
 
 # Application definition
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'redthumb/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,6 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "web/static"),
+    os.path.join(BASE_DIR, 'redthumb/build/static'),
 )
 STATIC_ROOT = '/static/'
 

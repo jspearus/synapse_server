@@ -30,6 +30,12 @@ def dashboard(request):
     return render(request, 'dashboard.html', {
         'devices': devices
     })
+    
+    
+def redthumb(request):
+    return render(request, 'index.html', {
+        
+    })
 
 
 def home(request):
