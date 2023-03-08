@@ -33,7 +33,7 @@ chatSocket.onmessage = function (event) {
       if (json.message.includes('mlevels')) {
         const lvls = json.message.split(",");
         let label = document.getElementById("status");
-        label.innerHTML = "plant1 Level- " + lvls[1] + " plant2 Level- " + lvls[2] + " plant3 Level- " + lvls[3];
+        label.innerHTML = "Plant1 Level- " + lvls[1] + " plant2 Level- " + lvls[2] + " plant3 Level- " + lvls[3];
       }
       else if (json.message.includes('tanklvl')) {
         const lvl = json.message.split(":");
