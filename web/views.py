@@ -3,9 +3,7 @@ import json
 from django.shortcuts import render
 
 from web.consumers import ChatRoomConsumer, get_device_list
-from web.consumers import get_tree_auto_status, get_tree_status, get_village_status, get_trees_status
-from web.consumers import get_carol_auto_status, get_monitor_status,  get_street_light_status
-from web.consumers import get_rem_auto, get_rem_mode, get_rem__pre_command, get_next_event
+
 from core.data_apis import get_weather
 
 
@@ -32,11 +30,6 @@ def dashboard(request):
     })
     
     
-def redthumb(request):
-    return render(request, 'index.html', {
-        
-    })
-
 
 def home(request):
     monisOn = get_monitor_status()
@@ -107,9 +100,9 @@ def room(request):
     })
 
 
-def term(request, room_name):
+def term(request):
     return render(request, 'term.html', {
-        'room_name': room_name
+        'room_name': 'term'
     })
 
 
