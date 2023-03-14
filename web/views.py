@@ -1,11 +1,18 @@
 import json
-
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from rest_framework import viewsets, filters
+from .serializers import  *
+from .models import ClientStats
 
 from web.consumers import ChatRoomConsumer, get_device_list
-
 from core.data_apis import get_weather
 
+
+class ClientStatsView(viewsets.ModelViewSet):
+    serializer_class = ClientStatsSerializer
+    queryset = ClientStats.objects.all()
+    search_fields = ['client_name', 'auto_mode', 'stats', 'status']
+    filter_backends = (filters.SearchFilter,)
 
 def update_weather():
     temp = get_weather()

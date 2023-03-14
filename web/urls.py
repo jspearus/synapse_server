@@ -1,8 +1,13 @@
-from django.urls import path
+from django.urls import path, re_path, include
+from rest_framework import routers
 
 from . import views
 
+router = routers.DefaultRouter()
+router.register(r'cstats', views.ClientStatsView)
+
 urlpatterns = [
+    path('api/', include(router.urls)),
     path('', views.dashboard, name='dashboard'),
     path('home/', views.home, name='home'),
     path('remote/', views.remote, name='remote'),
