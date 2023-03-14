@@ -6,7 +6,6 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 from multiprocessing import Process
 
-from reddb.consumers import save_record
 from core.data_apis import get_weather, get_sunset, getNxtHoliday
 
 device_list = ['all', 'web', ]
@@ -58,6 +57,12 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
                 print(device_list)
                 destination = "web"
                 message = device_list
+                
+        elif message == 'devices':
+            if username in device_list:
+                message = device_list
+                username = username
+                destination = destination
 
         # todo update device list before sending
 
@@ -86,11 +91,6 @@ class ChatRoomConsumer(AsyncWebsocketConsumer):
                 username = username
                 destination = username
                     
-    ################ Red Thumb Commands ###################################
-        elif 'mlevel' in message:
-            if destination == 'web':
-                recordThread = Process(target=save_record, args=(message,))
-                recordThread.start()
 
 
         await self.channel_layer.group_send(
